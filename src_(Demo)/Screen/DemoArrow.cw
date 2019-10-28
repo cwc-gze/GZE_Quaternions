@@ -24,13 +24,18 @@ package  {
 		public var oImg : Img;
 		public var oImg2 : Img;
 		public var oTest : Img;
+		public var bDancing : Bool = true;
 		
 		//public var sVwwdar : String;
 		
 		public function DemoArrow( _oParent : Root, _oRc: RcImg, _bFriendArrow : Bool = false ):Void {
 			Clip(_oParent, 0.0, 0.0);
 			//Just a test///////////////////
-		
+			
+			if(_bFriendArrow == false){
+				bDancing = false;
+			}
+			
 	
 			//new Img(this, 650.0, 0.0, "Exe|Rc/Arrow.png", true)
 			oImg = new Img(this, 650.0, 0.0, _oRc, true); //PoxX = distance of rotation
@@ -73,8 +78,9 @@ package  {
 			
 			oImg.vRot.nRoll = oImg.vRot.nRoll + 0.255;
 			
-			vRot.nPitch = vRot.nPitch  + 0.0005; //Arrow dancing
-			
+			if(bDancing){
+				vRot.nPitch = vRot.nPitch  + 0.0005; //Arrow dancing
+			}
 			
 		//	MnYaw(0.025);		 //Container rotate, Arrow inside then follow a circular path on Z axis
 		//	MnRoll(0.005);       //Container rotate, Arrow inside then follow a circular path on X axis
