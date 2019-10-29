@@ -130,13 +130,13 @@ package  {
 			
 			Debug.fTrace("---DemoRoll");
 			//oDemo = new DemoRoll(this);
-			
+			//return;
 			
 			
 			var _oRc : RcImg = new  RcImg("Exe|Rc/Arrow.png");
 			//oImg =  new Img(this, 650.0, 0.0, "Exe|Rc/Arrow.png", true)
 			for(var i : Int = 0; i < nNbArrowInst; i++;){
-				oDemo = new DemoArrow(this,_oRc, nNbArrowInst-1);
+				oDemo = new DemoArrow(this,_oRc, nNbArrowInst-1, i );
 				oDemo.vRot.nRoll = i * 5;
 				aDemoArrow[i] = oDemo;
 			}
