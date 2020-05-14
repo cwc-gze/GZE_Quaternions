@@ -15,15 +15,16 @@ package  {
 	import GZ.Gfx.Clip;
 	
 	import GZ.File.RcImg;
-	import Demo.Screen.DemoRoll;
+
 	//import Demo.Screen.FpsCount;
-	import Demo.Screen.DemoText;
-	
+	import Demo.Screen.LigthObj;
+	import GZ.Sys.Interface.Context;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Minimal;
-	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Quad;
+	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Quad.GzShModel_Quad;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Raymarching;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Shadertoy;
+	import GZ.Gpu.ShaderModel.AtModel.Attribute_Quad;
 	
 	
 	/*
@@ -60,6 +61,7 @@ package  {
 		public var oDemo : Clip;
 		public var aDemoArrow : Array<DemoArrow>;
 		public	var oImg : Img;
+		public var oLigthObj : LigthObj;
 	//	public var oGzShModel : GzShModel;
 		
 	//	public var oFps : FpsCount;
@@ -93,7 +95,7 @@ package  {
 			_bTranparent = false;
 			
 			//Create a new windows
-			Interface(_oThreadItf, "GroundZero", 800, 600, _bTranparent, 0xFFFFFFFF);
+			Interface(_oThreadItf, "GroundZero", 800, 600, _bTranparent, 0x0A0A0A011);
 			//, eWinBorder.Normal, true, true, true, _bCpuGraphique);
 		
 			
@@ -116,7 +118,7 @@ package  {
 		
 		override public function fWinStart():Void {
 			
-			
+			oLigthObj = new LigthObj();
 
 			Debug.fPass(" ---- Interface C~ initialised ----");
 			//!The windows was created
@@ -134,6 +136,12 @@ package  {
 			
 			
 			var _oRc : RcImg = new  RcImg("Exe|Rc/Arrow.png");
+			_oRc.fCpuLoad();
+			if(Context.oItf.bGpuDraw){
+				_oRc.fSetGpuTexLayer(Attribute_Quad.oTexture);
+				_oRc.fGpuLoad();
+			}
+			
 			//oImg =  new Img(this, 650.0, 0.0, "Exe|Rc/Arrow.png", true)
 			for(var i : Int = 0; i < nNbArrowInst; i++;){
 				oDemo = new DemoArrow(this,_oRc, nNbArrowInst-1, i );
