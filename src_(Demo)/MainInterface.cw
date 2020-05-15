@@ -35,7 +35,8 @@ package  {
 	*/
 	
  	import Demo.Screen.DemoArrow;
-	
+ 	import Demo.Screen.DemoButterfly;
+
 	import GZ.Base.Math.Math;
 	
 	import GZ.Base.Thread.Thread;
@@ -95,7 +96,7 @@ package  {
 			_bTranparent = false;
 			
 			//Create a new windows
-			Interface(_oThreadItf, "GroundZero", 800, 600, _bTranparent, 0x0A0A0A011);
+			Interface(_oThreadItf, "GroundZero", 800, 600, _bTranparent, 0xFFFFFF11);
 			//, eWinBorder.Normal, true, true, true, _bCpuGraphique);
 		
 			
@@ -135,12 +136,19 @@ package  {
 			//return;
 			
 			
+						
+			oDemo = new DemoButterfly(this);
+			return;
+			
+			
+			
 			var _oRc : RcImg = new  RcImg("Exe|Rc/Arrow.png");
 			_oRc.fCpuLoad();
 			if(Context.oItf.bGpuDraw){
 				_oRc.fSetGpuTexLayer(Attribute_Quad.oTexture);
 				_oRc.fGpuLoad();
 			}
+			
 			
 			//oImg =  new Img(this, 650.0, 0.0, "Exe|Rc/Arrow.png", true)
 			for(var i : Int = 0; i < nNbArrowInst; i++;){

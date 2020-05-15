@@ -16,7 +16,7 @@ package  {
 		//public var nIndex : UInt;
 			
 		public function LigthObj():Void {
-			Clip(parent, 400 , -100);
+			Clip(parent, 400 , -50);
 		
 			
 			
@@ -24,7 +24,7 @@ package  {
 			oLight.oBoxColor.vColor.nGreen = 1.000;
 			oLight.oBoxColor.vColor.nBlue = 1.000;
 			oLight.oBoxColor.vColor.nRed = 1.000;
-			oLight.oBoxColor.vColor.nAlpha = 150.000;
+			oLight.oBoxColor.vColor.nAlpha = 180.000;
 			
 			oLight.oBoxSpecular.vColor.nAlpha = 100;
 			oLight.oBoxSpecular.vColor.nGreen = 1.0;
